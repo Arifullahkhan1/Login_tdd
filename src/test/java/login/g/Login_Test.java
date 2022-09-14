@@ -2,10 +2,11 @@ package login.g;
 
 import org.junit.jupiter.api.BeforeEach;
 
+
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class Login_Test {
@@ -28,16 +29,30 @@ public class Login_Test {
     }
     @ParameterizedTest
     @CsvSource (value = {"Wrong Name, Wrong Password"})
-    public void validate_withWrongPassword_shouldThrow(String userName, String password){
+    public void validate_withWrongPassword_shouldThrow(String a, String b){
         //given
-        //when
+        //When
+        //Then
         UserCredentialException err=  assertThrows(UserCredentialException.class,
-                () -> login.validate(userName, password));
+                () -> login.validate(a, b));
         assertEquals("Wrong Name, Wrong Password",err.getMessage());
 
-        //then
-
     }
+
+    @ParameterizedTest
+    @CsvSource(value = {"anna,true", "berit,true", "kalle,true"})
+    public void verify_base24(String a,  boolean  expected) {
+        //Give
+
+        //When
+        boolean result = login.verify(a);
+        // Then
+        assertEquals(expected, result);
+    }
+    
+
+
+
 
 
 }
