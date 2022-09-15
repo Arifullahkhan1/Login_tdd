@@ -49,7 +49,17 @@ public class Login_Test {
         // Then
         assertEquals(expected, result);
     }
-    
+    @ParameterizedTest
+    @CsvSource (value = {"Base_24 Token is not Valid"})
+    public void verified_24base_ThrowException(String a){
+        //given
+        //When
+        //Then
+        Base24CredentialException err=  assertThrows(Base24CredentialException.class,
+                () -> login.verify(a));
+        assertEquals("Base_24 Token is not Valid",err.getMessage());
+
+    }
 
 
 

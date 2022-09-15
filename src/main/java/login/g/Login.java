@@ -15,8 +15,9 @@ public class Login {
 
                     byte[] orginalAsBytes = i.getBytes();
                     byte[] orginalAsBase64 = Base64.getEncoder().encode(orginalAsBytes);
-
-                    return new String(orginalAsBase64);
+                       String base24 = new String(orginalAsBase64);
+                     //  System.out.print(base24 + " bas 24");
+                    return  base24; // base24 toke
 
 
                 }
@@ -38,12 +39,13 @@ public class Login {
             byte[] backAsBase64Bytes = b24.getBytes();
             byte[] backAsBytes = Base64.getDecoder().decode(backAsBase64Bytes);
             String backAsOriginal = new String(backAsBytes);
+            //System.out.print(backAsOriginal + "-> ");
             if (backAsOriginal.equals(a)) {
                 return true;
             }
         }
 
-        return false;
+        throw new Base24CredentialException("Base_24 Token is not Valid");
     }
 }
 
