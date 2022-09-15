@@ -40,7 +40,7 @@ public class Login_Test {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"anna,true", "berit,true", "kalle,true"})
+    @CsvSource(value = {"YW5uYQ== , true", "YmV?+XQ=,false", "a2FsbGU,true"})
     public void verify_base24(String a,  boolean  expected) {
         //Give
 
@@ -49,9 +49,9 @@ public class Login_Test {
         // Then
         assertEquals(expected, result);
     }
-    @ParameterizedTest
-    @CsvSource (value = {"Base_24 Token is not Valid"})
-    public void verified_24base_ThrowException(String a){
+   /* @ParameterizedTest
+    @CsvSource (value = {"Base_24 Token is not Valid"})*/
+   /* public void verified_24base_ThrowException(String a){
         //given
         //When
         //Then
@@ -60,7 +60,7 @@ public class Login_Test {
         assertEquals("Base_24 Token is not Valid",err.getMessage());
 
     }
-
+*/
 
 
 

@@ -33,21 +33,23 @@ public class Login {
 
     }
 
-    public boolean verify(String a) {
-        String[] b24String = {"YW5uYQ==", "YmVyaXQ=", "a2FsbGU"};
-        for (String b24 : b24String) {
-            byte[] backAsBase64Bytes = b24.getBytes();
-            byte[] backAsBytes = Base64.getDecoder().decode(backAsBase64Bytes);
-            String backAsOriginal = new String(backAsBytes);
-            //System.out.print(backAsOriginal + "-> ");
-            if (backAsOriginal.equals(a)) {
-                return true;
-            }
-        }
+    public boolean verify(String token) {
 
-        throw new Base24CredentialException("Base_24 Token is not Valid");
+
+       try {
+           byte[] backAsBase64Bytes = token.getBytes();
+           byte[] backAsBytes = Base64.getDecoder().decode(backAsBase64Bytes);
+            return true;
+       } catch (IllegalArgumentException e) {
+           return false;
+
+       }
     }
 }
+
+
+
+
 
 
 
